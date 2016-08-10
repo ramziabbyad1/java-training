@@ -1,0 +1,43 @@
+1) Write a program to read data from file1 and file2 and copy the data in file3 (use inputstream and outputstream classes)
+   Ex:- file1.txt   has data
+        Source Mantra
+		295 Durham ave
+		
+		file2.txt has data
+		South Plainfield
+		07080
+		
+		file3.txt
+		Source Mantra
+		295 Durham ave
+		South Plainfield
+        0780
+	
+2) Write a program to read first line from file1 and copy into file3, then read first line from file2 and copy it in file3,
+   repeat this till all lines from both the files have been read and copied to file3 (use reader and writer classes)
+   
+   Ex:-   File1.txt                   File2.txt
+          banana					  maths
+		  grapes                      science
+		  mango                       social studies
+		  
+		  file3.txt
+		  banana
+		  maths
+		  grapes
+		  science
+		  mango
+		  social studies
+3) Write a program to replace the word 'CSharp' with 'Java' in the following file called myfile.txt
+   CSharp is simple and easy.
+   CSharp is object oriented programming language.
+   I like learning CSharp very much.
+   CSharp is CSharp.
+   
+ 4) Write a program to write binary data (int, float, double values) to a file called mydata.dat
+ 5) Write a program to read data from file mydata.dat created int ques 4
+ 
+ 6) Write a program to read a text file called 'apple.txt'. Your program should read one line at a time and place the line in an arraylist. Now display the 
+    lines in the arraylist in reverse order.
+    
+ 7)

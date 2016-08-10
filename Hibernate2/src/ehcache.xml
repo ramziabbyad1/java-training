@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+	<diskStore path= "c:\cachings"/>
+	<defaultCache 
+		maxElementsInMemory = "80000"
+		eternal = "false"
+		timeToIdleSeconds = "600"
+		timeToLiveSeconds = "600"
+		overflowToDisk = "true"
+	/>
+	<cache
+		name="com.examples.entity.Employee"
+		maxElementsInMemory = "8000"
+		eternal = "false"
+		overflowToDisk ="true" 
+	/>
+	<!--  <cache
+		name="org.hibernate.cache.StandardQueryCache"
+		maxElementsInMemory=  "8000"
+		eternal = "false"
+		overflowToDisk = "true"
+	/>-->
+</ehcache>

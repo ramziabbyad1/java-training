@@ -1,0 +1,193 @@
+import java.awt.*;
+
+public class Trapezoid{
+
+    double[][] trapezoidalFaces = new double [][4];
+
+    public double[][] transformPolygon(double[][] vertices){}
+
+    double[][] tempArray = new double[4][2];
+    double[][] vertex = new double[4][2];
+    //RETURNS THE ARRAY OF VERTICES FOR A PARTICULAR FACE SORTED ACCORDING TO INCREASING Y
+    //ALSO SORTS THE PHONG ARRAY ACCORDING TO INCREASING Y-VALUE
+    public void customSort(double[][] vertices,double[][] phong){
+        tempArray = vertices;
+        double[][] tempPhong = phong;
+        Arrays.sort(vertices[][1]);
+
+        for(int i =0; i < 4; i++){
+            for(int j = 0; j < 4; j++){
+                if(tempArray[j][1] == vertices[i][1]){
+                    vertex[i] = tempArray[j];
+                    phong[i] = tempPhong[j];
+                }
+            }
+        }
+        reverseOrder(vertex);
+        reverseOrder(phong);
+        vertices = vertex;
+    }
+
+    public void reverseOrder(double[][] array){
+        double[][] tempArray = new double[4][2];
+        int n = 4;
+        for(int i =0; i < 4 i++){
+            tempArray[i] = array[3-i];
+        }
+        array = tempArray;
+    }
+
+
+    double[][][] trapFace = new double[8][2][4];
+    double[] TL1 = new double[2];
+    double[] TR1 = new double[2];
+    double[] BL1 = new double[2];
+    double[] BR1 = new double[2];
+    double[] TL2 = new double[2];
+    double[] TR2 = new double[2];
+    double[] BL2 = new double[2];
+    double[] BR2 = new double[2];
+    double[] TL3 = new double[2];
+    double[] TR3 = new double[2];
+    double[] BL3 = new double[2];
+    double[] BR3 = new double[2];
+    double[] TL4 = new double[2];
+    double[] TR4 = new double[2];
+    double[] BL4 = new double[2];
+    double[] BR4 = new double[2];
+
+    //THESE VERTICES SHOULD ALREADY BE TRANSFORMED ACCORDING TO THE VIEWPORT TRANSFORM
+    public double[][][] createTrapezoid(double[][] vertices,double[][] phong){
+        customSort(vertices,phong);
+        TL1= vertices[0];
+        TR1 = vertices[0];
+        phongTL1 = phong[][0];
+        phongTR1 = phong[][0];
+
+
+        if(vertices[0][0] <= vertices[1][0]){
+            BL1 = vertices[1];
+            BR1[0] = ((vertices[1][1] - vertices[0][1])/(vertices[0][1] - vertices[2][1]))*(vertices[0][0] - vertices[2][0]) + vertices[0][0];
+            BR1[1] = vertices[1][1];
+            LinearInterpolator LIred = new LinearInterpolator(vertices[0][1],vertices[2][1],phong[0][0],phong[0][2]);
+            LinearInterpolator LIgreen = new LinearInterpolator(vertices[0][1],vertices[2][1],phong[1][0],phong[1][2]);
+            LinearInterpolator LIblue = new LinearInterpolator(vertices[0][1],vertices[2][1],phong[2][0],phong[2][2]);
+            double r = LIred.interp(BR1[1]);
+            double g = LIgreen.interp(BR1[1]);
+            double b = LIblue.interp(BR1[1]);
+            phongBL1 = phong[][1];
+            double[] phongBR1 = {r,g,b,phongBL1[4]};
+            BR3[0] = ((vertices[2][1] - vertices[3][1])/(vertices[1][1] - vertices[3][1]))*(vertices[1][0] - vertices[3][0]) + vertices[3][0];
+            BR3[1] = vertices[2][1];
+            LinearInterpolator LIred = new LinearInterpolator(vertices[1][1],vertices[3][1],phong[0][0],phong[0][2]);
+            LinearInterpolator LIgreen = new LinearInterpolator(vertices[1][1],vertices[3][1],phong[1][0],phong[1][2]);
+            LinearInterpolator LIblue = new LinearInterpolator(vertices[1][1],vertices[3][1],phong[2][0],phong[2][2]);
+            double r = LIred.interp(BR1[1]);
+            double g = LIgreen.interp(BR1[1]);
+            double b = LIblue.interp(BR1[1]);
+            phongBL3 = phong[][2];
+            phongBR1 = phong[][1];
+            double[] phongBR3 = {r,g,b,phongBL3[4]};
+            BL3 = vertices[2];
+
+        }
+        else{
+            BL1[0] = ((vertices[1][1] - vertices[0][1])/(vertices[0][1] - vertices[2][1]))*(vertices[0][0] - vertices[2][0]) + vertices[0][0];
+            BL1[1] = vertices[1][1];
+            BR1[1] = vertices[1];
+            phongBL1 = phong[][1];
+            LinearInterpolator LIred = new LinearInterpolator(vertices[0][1],vertices[2][1],phong[0][0],phong[0][2]);
+            LinearInterpolator LIgreen = new LinearInterpolator(vertices[0][1],vertices[2][1],phong[1][0],phong[1][2]);
+            LinearInterpolator LIblue = new LinearInterpolator(vertices[0][1],vertices[2][1],phong[2][0],phong[2][2]);
+            double r = LIred.interp(BL1[1]);
+            double g = LIgreen.interp(BL1[1]);
+            double b = LIblue.interp(BL1[1]);
+            double[] phongBR1 = {r,g,b,phongBL1[4]};
+            BL3[0] = ((vertices[2][1] - vertices[3][1])/(vertices[1][1] - vertices[3][1]))*(vertices[1][0] - vertices[3][0]) + vertices[3][0];
+            BL3[1] = vertices[2][1];
+            BR3 = vertices[2];
+            LinearInterpolator LIred = new LinearInterpolator(vertices[1][1],vertices[3][1],phong[0][0],phong[0][2]);
+            LinearInterpolator LIgreen = new LinearInterpolator(vertices[1][1],vertices[3][1],phong[1][0],phong[1][2]);
+            LinearInterpolator LIblue = new LinearInterpolator(vertices[1][1],vertices[3][1],phong[2][0],phong[2][2]);
+            double r = LIred.interp(BR3[1]);
+            double g = LIgreen.interp(BR3[1]);
+            double b = LIblue.interp(BR3[1])
+            phongBL3 = {r,g,b, phongBR3[4]};
+            phongBR3 = phong[][2];
+
+
+        }
+
+
+        TL2= BL1;
+        TR2 = BR1;
+        phongTL2 = phongBL1;
+        phongTR2 = phongBR1;
+
+        BL2 = vertices[2];
+        BR2 = vertices[2];
+        phongBL2 = phong[][2];
+        phongBR2 = phong[][2];
+
+        TL3 = vertices[1];
+        TR3 = vertices[1];
+        phongTL3 = phong[][1];
+        phongTR3 = phong[][1];
+
+        TR4 = BR3;
+        TL4 = BL3;
+        phongTL4 = phongBL3;
+        phongTR4 = phongBR3;
+
+        BL4 = vertices[3];
+        BR4 = vertices[3];
+        phongBL4 = phong[][3];
+        phongBR4 = phong[][3];
+
+        trapFace[0][][0] = TR1;
+        trapFace[1][][0] = TL1;
+        trapFace[2][][0] = BL1;
+        trapFace[3][][0] = BR1;
+        trapFace[4][][0] = phongTR1;
+        trapFace[5][][0] = phongTL1;
+        trapFace[6][][0] = phongBL1;
+        trapFace[7][][0] = phongBR1;
+
+        trapFace[0][][1] = TR2;
+        trapFace[1][][1] = TL2;
+        trapFace[2][][1] = BL2;
+        trapFace[3][][1] = BR2;
+        trapFace[4][][0] = phongTR2;
+        trapFace[5][][0] = phongTL2;
+        trapFace[6][][0] = phongBL2;
+        trapFace[7][][0] = phongBR2;
+
+        trapFace[0][][2] = TR3;
+        trapFace[1][][2] = TL3;
+        trapFace[2][][2] = BL3;
+        trapFace[3][][2] = BR3;
+        trapFace[4][][0] = phongTR3;
+        trapFace[5][][0] = phongTL3;
+        trapFace[6][][0] = phongBL3;
+        trapFace[7][][0] = phongBR3;
+
+        trapFace[0][][3] = TR4;
+        trapFace[1][][3] = TL4;
+        trapFace[2][][3] = BL4;
+        trapFace[3][][3] = BR4;
+        trapFace[4][][0] = phongTR4;
+        trapFace[5][][0] = phongTL4;
+        trapFace[6][][0] = phongBL4;
+        trapFace[7][][0] = phongBR4;
+
+
+
+    }
+
+
+
+
+
+
+
+

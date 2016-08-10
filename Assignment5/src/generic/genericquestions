@@ -1,0 +1,9 @@
+1. Answer:  See CountProperty class.
+2. Answer: No, it must have the generic symbol <T>.  Furthermore it must have the types <T extends Number> in order to use the > comparison operator.  Also comparison should read x.doubleValue() > y.doubleValue().  Finally, the static should be removed as the type can not be determined at run time and thus the class should be instantiated with the correct type.
+3. Answer: See Swap.java.
+4. Answer: Generics are a way of maintaining type safety.  ALL types are erased at run time after they have been compiled to bytecode. generics only help having to upcast and downcast manually from Object type.  In other words type-erasure has no negative effect on generics because type-erasure does not prevent type-safety.
+5. Answer: Yes, it will compile.
+6. Answer: See gener.Max.java;
+7. Answer: No, again can't make static references to non-static types.  Also the instance type must either be changed to Singleton<T> or Singleton<T> should be cast to type T.
+8. Answer: No, you can use the upperbound wildcard on ns, so type of ns is Node<? extends Shape> ns = nc;
+9. Answer: Yes, it will.

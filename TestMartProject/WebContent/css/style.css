@@ -1,0 +1,39 @@
+@CHARSET "ISO-8859-1";
+
+body{
+	font-family: Arial, Hevlitica;
+	width: 700px;
+	height: 1100px;
+	margin: 10px auto;
+}
+
+#header{
+	height:20px;
+	background-color:#33ccff;
+}
+
+#main{
+	background-color: #99ffff;
+	height: 100%;
+	width:100%;
+}
+
+#leftcolumn{
+	height: 450px;
+	width: 350px;
+	float: left;
+	background-color:#99cc99
+}
+
+#rightcolumn{
+	height: 450px;
+	width: 350px;
+	float: left;
+	background-color: #99ff33	
+}
+
+#footer{
+	background-color: #99aa33;
+	height: 100px;
+	width: 100%;
+}

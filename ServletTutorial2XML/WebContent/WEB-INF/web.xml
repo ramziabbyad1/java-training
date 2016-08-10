@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>ServletTutorial</display-name>
+  <welcome-file-list>
+  <welcome-file>index2.html</welcome-file>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <context-param>
+    <param-name>context</param-name>
+    <param-value>Hi, i'm a context parameter!</param-value>
+  </context-param>
+  <servlet>
+  	<servlet-name>s1</servlet-name>
+  	<servlet-class>com.tutorial.cookies.FirstServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>s2</servlet-name>
+  	<servlet-class>com.tutorial.cookies.SecondServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ContextVConfig</servlet-name>
+    <servlet-class>com.tutorial.config.ContextVConfig</servlet-class>
+    <init-param>
+      <param-name>config</param-name>
+      <param-value>Hi, i'm a config parameter!</param-value>
+    </init-param>
+  </servlet>
+	<servlet-mapping>
+		<servlet-name>s1</servlet-name>
+		<url-pattern>/servlet1</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>s2</servlet-name>
+		<url-pattern>/servlet2</url-pattern>
+	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ContextVConfig</servlet-name>
+    <url-pattern>/servlet3</url-pattern>
+  </servlet-mapping>
+</web-app>

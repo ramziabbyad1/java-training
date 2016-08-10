@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/templates/mytemplate.xhtml">
+	
+	<ui:define name="content">
+		<h1>List of books.</h1>
+		<f:view>
+			<h:dataTable value="#{bookBean.books}" var="b" border="1">
+					<h:column>
+						<f:facet name="header">Book Id</f:facet>
+						#{b.bookId}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Book Title</f:facet>
+						#{b.title}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Book Author</f:facet>
+						#{b.author}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Book Price</f:facet>
+						#{b.price}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Book Date Published</f:facet>
+						#{b.datePub}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Edit</f:facet>
+						<h:link value="edit" outcome="editBook">
+							<f:param name="id" value="#{b.bookId}"></f:param>
+						</h:link>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Edit</f:facet>
+						<h:link value="delete" outcome="deleteBook">
+							<f:param name="id" value="#{b.bookId}"></f:param>
+						</h:link>
+					</h:column>
+			</h:dataTable>
+			<h:link value="Add Book" outcome="addBook"></h:link>
+		</f:view>	   
+	</ui:define>
+
+</ui:composition>
+</html>

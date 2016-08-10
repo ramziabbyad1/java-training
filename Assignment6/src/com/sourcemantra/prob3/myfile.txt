@@ -1,0 +1,4 @@
+   Java is simple and easy.
+   Java is object oriented programming language.
+   I like learning Java very much.
+   Java is Java.

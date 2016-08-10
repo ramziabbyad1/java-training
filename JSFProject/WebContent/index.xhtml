@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<head>
+<title>Pee pee</title>
+</head>
+
+<body>
+	<f:view>
+		<h:form>
+			<br/><h:outputLabel id="userLabel">Enter User ID:</h:outputLabel>
+			<!-- userBean  is a simple managed beans.  Called managed because object for bean
+			managed by container.  I.E. Dependency injection is available. -->
+			<h:inputText id="userId" value="#{userBean.userId}"/>
+			<br/><h:outputLabel id="passwordLabel">Enter Password:</h:outputLabel>
+			<h:inputSecret id="password" value="#{userBean.password}"/>
+			<br/>
+			<h:commandButton id="submit" action="#{userBean.authenticate}"/>
+		</h:form>
+	</f:view>
+</body>
+
+</html>

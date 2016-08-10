@@ -1,0 +1,55 @@
+1.	Write a generic method to count the number of elements in a collection that have a specific property (for example, odd integers, prime numbers, palindromes).
+2.	Will the following class compile? If not, why?
+public final class Algorithm {
+    public static T max(T x, T y) {
+        return x > y ? x : y;
+    }
+}
+No, it must have the generic symbol <T>.  Furthermore it must have the types <T extends Number> in order to use the > comparison operator.  Also comparison should read x.doubleValue() > y.doubleValue().  Finally, the static should be removed as the type can not be determined at run time and thus the class should be instantiated with the correct type.
+3.	Write a generic method to exchange the positions of two different elements in an array.
+4.	If the compiler erases all type parameters at compile time, why should you use generics? 
+generics are a way of maintaining type safety.  ALL types are erased at run time after they have been compiled to bytecode. generics only help having to upcast and downcast manually from Object type.  In other words type-erasure has no negative effect on generics because type-erasure does not prevent type-safety.
+5.	Will the following method compile? If not, why?
+public static void print(List<? extends Number> list) {
+    for (Number n : list)
+        System.out.print(n + " ");
+    System.out.println();
+}
+Yes, it will.
+6.	Write a generic method to find the maximal element in the range [begin, end) of a list.
+7.	Will the following class compile? If not, why?
+public class Singleton<T> {
+
+    public static T getInstance() {
+        if (instance == null)
+            instance = new Singleton<T>();
+
+        return instance;
+    }
+
+    private static T instance = null;
+}
+No, again can't make static references to non-static types.  Also the instance type must either be changed to Singleton<T> or Singleton<T> should be cast to type T.
+8.	Given the following classes:
+class Shape { /* ... */ }
+class Circle extends Shape { /* ... */ }
+class Rectangle extends Shape { /* ... */ }
+
+class Node<T> { /* ... */ }
+Will the following code compile? If not, why?
+Node<Circle> nc = new Node<>();
+Node<Shape>  ns = nc;
+
+No, you can use the upperbound wildcard on ns, so type of ns is Node<? extends Shape> ns = nc;
+
+9.	Consider this class:
+class Node<T> implements Comparable<T> {
+    public int compareTo(T obj) { /* ... */ }
+    // ...
+}
+Will the following code compile? If not, why?
+Node<String> node = new Node<>();
+Comparable<String> comp = node;
+
+Yes, it will.
+

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"> 
+ 
+<hibernate-configuration> 
+ <session-factory> 
+ <property name="hibernate.dialect"> 
+ org.hibernate.dialect.MySQLDialect 
+ </property> 
+ <property name="hibernate.connection.driver_class"> 
+ com.mysql.jdbc.Driver 
+ </property> 
+ 
+ <!-- Assume test is the database name --> 
+ <property name="hibernate.connection.url"> 
+ jdbc:mysql://localhost/source_mantra_db
+ </property> 
+ <property name="hibernate.connection.username"> 
+ root 
+ </property> 
+ <property name="hibernate.connection.password"> 
+ ClaraPark728!
+ </property> 
+ 
+ <!-- Enable Hibernate's automatic session context management -->
+<property name="hibernate.current_session_context_class">thread</property>
+ 
+<!-- Disable the second-level cache -->
+<property name="hibernate.cache.use_second_level_cache">true</property>
+<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+<property name="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider
+</property>
+ 
+<!-- Echo all executed SQL to stdout -->
+<property name="hibernate.show_sql">true</property>
+ 
+<!-- Drop and re-create the database schema on startup -->
+<property name="hibernate.hbm2ddl.auto">create</property>
+ 
+ <!-- List of XML mapping files --> 
+ 
+ <!--  <mapping class="com.examples.entity.Employee"/>-->
+ <!--<mapping class="com.examples.entity.Customers"/>-->
+ <mapping class="com.examples.entity.Student"/>
+ <mapping resource="/com/examples/entity/Student.hbm.xml"/>
+  <!--<mapping class="com.examples.entity.Employee"/>
+ <mapping class="com.examples.entity.RegularEmployee"/>
+ <mapping class="com.examples.entity.ContractEmployee"/>-->
+ 
+ <!-- <mapping resource="com/list/Employee.hbm.xml"/>-->
+ 
+ 
+</session-factory> 
+</hibernate-configuration>

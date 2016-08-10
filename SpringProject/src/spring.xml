@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> 
+        
+
+	<!-- bean definitions here -->
+	<context:annotation-config/>
+	<context:component-scan base-package="com.examples.beans"/>
+	<bean id="parent-triangle" class="com.examples.beans.Triangle" >
+		<property name="A" ref="pointA"/>
+	</bean>
+	<bean id="triangle" class="com.examples.beans.Triangle" parent="parent-triangle">
+		<property name="name" value="Equilateral"/>
+		<property name="height" value="20"/>
+		<property name="B" ref="pointB"/>
+		<property name="C" ref="pointC"/>
+		
+		<!--  <property name="A" ref="pointA"/>
+		<property name="B" ref="pointB"/>		
+		<property name="C" ref="pointC"/>-->
+	
+		<!--<constructor-arg type="String" value="Equilateral"/>
+		<constructor-arg type="int" value="20"/>-->
+		<!-- <property name="height" value="20"/> --> 
+	</bean>
+	<bean id="pointA" class="com.examples.beans.Point">
+		<property name="x" value="20"/>
+		<property name="y" value="5"/>
+	</bean>
+	<bean id="pointB" class="com.examples.beans.Point">
+		<constructor-arg type="int" value="10"/>
+		<constructor-arg value="30"/>
+	</bean>
+	<bean id="pointC" class="com.examples.beans.Point">
+		<property name="x" value="120"/>
+		<property name="y" value="-55"/>
+	</bean>	
+	<alias name="triangle" alias="new-triangle"/>
+	
+	
+	
+	<bean id="circle" class="com.examples.beans.Circle" scope="singleton" init-method="myinit" destroy-method="mydestroy">
+		<property name="name" value="Oval"/>
+		<property name="radius" value="5"/>
+	</bean>
+	
+	<bean class="com.examples.beans.DisplayBeanNamePostProcessor"/>
+	<bean class="com.examples.beans.MyBeanFactoryPostProcessor"/>
+	<!--  <bean id="student" class="com.examples.beans.Student">
+			<property name="id" value="1"/>
+		<property name="name" value="Ramzi"/>
+	</bean>-->
+	<!--  <bean id="book" class="com.examples.beans.Book">
+	<property name="id" value="1"/>
+		<property name="name" value="Ramzi's Book"/>
+	</bean>-->
+	
+	
+
+</beans>

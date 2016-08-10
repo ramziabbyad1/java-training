@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/templates/mytemplate.xhtml">
+	<ui:define name="content">
+    	<f:view>
+    		<h:form>
+    			<br/><h:outputLabel id="bid">Book ID: </h:outputLabel>
+    			<h:inputText id="bookId" value="#{bookBean.book.bookId}"></h:inputText>
+    			<br/><h:outputLabel id="btit">Book Title:</h:outputLabel>
+    			<h:inputText id="title" value="#{bookBean.book.title}"/>
+    			<br/><h:outputLabel id="bauth">Book Author: </h:outputLabel>
+    			<h:inputText id="author" value="#{bookBean.book.author}"/>
+    			<br/><h:outputLabel id="bprice">Book Price: </h:outputLabel>
+    			<h:inputText id="price" value="#{bookBean.book.price}"/>
+    			<br/><h:outputLabel id="bdate">Book Date Published: </h:outputLabel>
+    			<h:inputText id="datePub" value="#{bookBean.book.datePub}">
+    				<f:convertDateTime pattern="yyyy-mm-dd" type="date"/>
+    			</h:inputText>
+    			<br/><h:commandButton id="submit" action="#{bookBean.add}"/> 
+    		</h:form>
+    	</f:view>
+	</ui:define>
+</ui:composition>
+</html>

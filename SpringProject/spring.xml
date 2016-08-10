@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+
+	<!-- bean definitions here -->
+	<bean id="triangle" class="com.examples.beans.Triangle">
+		 <property name="name" value="Equilateral"/>
+		 <property name="height" value="20"/> 
+	</bean>
+	<bean id="circle" class="com.examples.beans.Circle">
+		 <property name="name" value="Oval"/>
+		 <property name="height" value="20"/> 
+	</bean>
+		<bean id="shapeService" class="com.examples.beans.ShapeService" autowire="byName">
+		 
+	</bean>
+
+</beans>

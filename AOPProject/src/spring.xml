@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"> <!-- bean definitions here -->    
+
+	<!-- bean definitions here -->
+	<bean id="triangle" class="com.examples.beans.Triangle">
+		 <property name="name" value="Equilateral"/>
+		
+	</bean>
+	<bean id="circle" class="com.examples.beans.Circle">
+		 <property name="name" value="Oval"/>
+		 
+	</bean>
+		<bean id="shapeService" class="com.examples.beans.ShapeService" autowire="byName">
+		 
+	</bean>
+	<!-- <bean id="loggingAspect" class="com.examples.aspect.LoggingAspect">
+    	
+	</bean> -->
+	
+	<bean id="loggingAspect" class="com.examples.aspect.LoggingAspect"  />
+	<bean id="anotherAspect" class="com.examples.aspect.AnotherAspect"  />
+	<!-- This is equivalent to @Aspect -->
+	<aop:config>
+		<aop:aspect id="myAspect" ref="anotherAspect">
+			<aop:pointcut expression="execution (public void draw())" id="drawMethod"/>
+			<aop:before method="myAdvice" pointcut-ref="drawMethod"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:aspectj-autoproxy/>
+
+
+</beans>

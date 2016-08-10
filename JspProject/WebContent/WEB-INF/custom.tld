@@ -1,0 +1,17 @@
+<taglib>
+	<!-- these are compulsory tags -->
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.0</jsp-version>
+	<short-name>HelloExample</short-name>
+	
+	<tag>
+		<!-- name should match tag definition -->
+		<name>Hello</name>
+		<tag-class>com.examples.HelloTag</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<name>msg</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+</taglib>

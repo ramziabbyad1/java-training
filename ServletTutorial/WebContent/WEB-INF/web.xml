@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>ServletTutorial</display-name>
+  <welcome-file-list>
+    <welcome-file>index1.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <context-param>
+    <param-name>context</param-name>
+    <param-value>Hi, i'm a context parameter!</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>ContextVConfig</servlet-name>
+    <servlet-class>ContextVConfig</servlet-class>
+    <init-param>
+      <param-name>config</param-name>
+      <param-value>Hi, i'm a config parameter!</param-value>
+    </init-param>
+  </servlet>
+  <servlet>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>Login</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>WelcomeServlet</servlet-name>
+    <servlet-class>WelcomeServ</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/servlet1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WelcomeServlet</servlet-name>
+    <url-pattern>/servlet2</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>ContextVConfig</servlet-name>
+    <url-pattern>/servlet3</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
